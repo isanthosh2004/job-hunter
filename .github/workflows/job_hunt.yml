@@ -33,8 +33,6 @@ jobs:
           GMAIL_USER:       ${{ secrets.GMAIL_USER }}
           GMAIL_PASSWORD:   ${{ secrets.GMAIL_PASSWORD }}
           RECIPIENT_EMAIL:  ${{ secrets.RECIPIENT_EMAIL }}
-          ADZUNA_APP_ID:    ${{ secrets.ADZUNA_APP_ID }}
-          ADZUNA_API_KEY:   ${{ secrets.ADZUNA_API_KEY }}
           SERPAPI_KEY:      ${{ secrets.SERPAPI_KEY }}
           JSEARCH_KEY:      ${{ secrets.JSEARCH_KEY }}
         run: python job_hunter.py
