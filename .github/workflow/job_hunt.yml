@@ -1,0 +1,47 @@
+name: 🎯 Global Job Hunter (Every 6 Hours)
+
+on:
+  schedule:
+    #  UTC times  →  IST (UTC+5:30)
+    - cron: '30 0 * * *'    # 06:00 AM IST  (Morning)
+    - cron: '30 6 * * *'    # 12:00 PM IST  (Afternoon)
+    - cron: '30 12 * * *'   # 06:00 PM IST  (Evening)
+    - cron: '30 18 * * *'   # 12:00 AM IST  (Night)
+  workflow_dispatch:          # Manual trigger anytime
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 🎯 Run Job Hunter
+        env:
+          GMAIL_USER:       ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD:   ${{ secrets.GMAIL_PASSWORD }}
+          RECIPIENT_EMAIL:  ${{ secrets.RECIPIENT_EMAIL }}
+          ADZUNA_APP_ID:    ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_API_KEY:   ${{ secrets.ADZUNA_API_KEY }}
+          SERPAPI_KEY:      ${{ secrets.SERPAPI_KEY }}
+          JSEARCH_KEY:      ${{ secrets.JSEARCH_KEY }}
+        run: python job_hunter.py
+
+      - name: 📋 Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: job-hunter-logs
+          path: "*.log"
+          retention-days: 3
