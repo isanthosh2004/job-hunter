@@ -1112,8 +1112,8 @@ ALL_SOURCES = [
 ]
 
 def main():
-    run_time = datetime.now().strftime("%d %b %Y · %I:%M %p IST")
-    hour     = datetime.now().hour
+    run_time = datetime.now(timezone(timedelta(hours=5, minutes=30))).strftime("%d %b %Y · %I:%M %p IST")
+    hour = datetime.now(timezone(timedelta(hours=5, minutes=30))).hour
     cycle    = 1 if 5<=hour<11 else 2 if 11<=hour<17 else 3 if 17<=hour<23 else 4
 
     print(f"\n{'═'*58}")
@@ -1139,7 +1139,7 @@ def main():
     subject = (
         f"🎯 {len(all_jobs)} Jobs | "
         f"India · Gulf · SEA · Remote | "
-        f"{datetime.now().strftime('%d %b %Y %I:%M %p')}"
+        f"{datetime.now(timezone(timedelta(hours=5, minutes=30))).strftime('%d %b %Y %I:%M %p IST')}"
     )
     send_email(subject, html)
 
