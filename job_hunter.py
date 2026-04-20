@@ -34,8 +34,6 @@ except ImportError:
 GMAIL_USER     = os.getenv("GMAIL_USER", "")
 GMAIL_PASS     = os.getenv("GMAIL_PASSWORD", "")
 RECIPIENT      = os.getenv("RECIPIENT_EMAIL", "santhoshkumarsp222004@gmail.com")
-ADZUNA_ID      = os.getenv("ADZUNA_APP_ID", "")
-ADZUNA_KEY     = os.getenv("ADZUNA_API_KEY", "")
 SERPAPI_KEY    = os.getenv("SERPAPI_KEY", "")     # serpapi.com — 100 free/month trial
 JSEARCH_KEY    = os.getenv("JSEARCH_KEY", "")     # rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch — free tier
 
@@ -1100,7 +1098,6 @@ ALL_SOURCES = [
     ("LinkedIn Hiring Posts",                        fetch_linkedin_posts),
     ("Web-wide ATS Search (Google)",                 fetch_web_job_search),
     ("JSearch (RapidAPI)",                           fetch_jsearch),
-    ("Adzuna — India · Gulf · Singapore",            fetch_adzuna),
     ("Remotive",                                     fetch_remotive),
     ("Jobicy",                                       fetch_jobicy),
     ("Arbeitnow",                                    fetch_arbeitnow),
