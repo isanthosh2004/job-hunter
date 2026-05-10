@@ -2,10 +2,10 @@ name: 🎯 Global Job Hunter (Every 6 Hours)
 
 on:
   schedule:
-    - cron: '30 0 * * *'
-    - cron: '30 6 * * *'
-    - cron: '30 12 * * *'
-    - cron: '30 18 * * *'
+    # - cron: '30 0 * * *'
+    # - cron: '30 6 * * *'
+    # - cron: '30 12 * * *'
+    # - cron: '30 18 * * *'
   workflow_dispatch:
 
 env:
